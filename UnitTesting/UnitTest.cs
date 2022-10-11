@@ -74,5 +74,23 @@ namespace UnitTesting
             var expected = "\"John\" \"12.10\"\n\"Jane\" \"12.10\"\n";
             Assert.AreEqual(expected, result);
         }
+
+        [TestMethod]
+        public void TestExecuteCommands()
+        {
+            // Arrange
+            File.WriteAllText(inputFile, "");
+            string s1 = "Add <John> <12.10>";
+            string s2 = "Add <Jane> <12.10>";
+
+            // Act
+            BirthdayReminder.BirthdayReminder.ExecuteCmd(s1, inputFile);
+            BirthdayReminder.BirthdayReminder.ExecuteCmd(s2, inputFile);
+
+            // Assert
+            var result = BirthdayReminder.BirthdayReminder.GetRecords("12.10", inputFile);
+            var expected = "\"John\" \"12.10\"\n\"Jane\" \"12.10\"\n";
+            Assert.AreEqual(expected, result);
+        }
     }
 }

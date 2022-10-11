@@ -20,8 +20,6 @@ namespace BirthdayReminder
 
         public static string GetRecords(string date, string database)
         {
-            // TDD - GetRecordsOnDate - Refactor Stage
-
             string[] records = File.ReadAllLines(database);
             string relevantRecords = "";
             foreach (string record in records)
@@ -33,6 +31,13 @@ namespace BirthdayReminder
             }
 
             return relevantRecords;
+        }
+
+        public static string ExecuteCmd(string cmd, string database)
+        {
+            // TDD - TestExecuteCommands - Red Stage
+
+            return "";
         }
     }
 }
