@@ -20,17 +20,16 @@ namespace BirthdayReminder
 
         public static string GetRecords(string date, string database)
         {
-
-            // TDD - GetRecordsOnDate - Green Stage
+            // TDD - GetRecordsOnDate - Refactor Stage
 
             string[] records = File.ReadAllLines(database);
             string relevantRecords = "";
             foreach (string record in records)
             {
-                if (record.EndsWith($"\"{date}\""))
-                {
+                if (!record.EndsWith($"\"{date}\""))
+                    continue;
+
                     relevantRecords += record + "\n";
-                }
             }
 
             return relevantRecords;
