@@ -37,8 +37,6 @@ namespace BirthdayReminder
 
         public static string ExecuteCmd(string command, string database)
         {
-            // TDD - TestExecuteCommands - Refactor Stage
-
             Regex regex = new Regex(@"(?<cmd>\S+)(\s*<(?<pars>.*?)>\s*)*");
             Match match = regex.Match(command);
             string cmd = match.Groups["cmd"].Value.ToLower();
