@@ -38,5 +38,25 @@ namespace UnitTesting
             var result = File.ReadAllText(inputFile);
             Assert.AreEqual(expected, result);
         }
+
+        [TestMethod]
+        public void TestAddRecordRules()
+        {
+            // Arrange
+            File.WriteAllText(inputFile, "");
+
+            // Act
+            string name1 = @"""John""""";
+            string date1 = "11.10";
+            BirthdayReminder.BirthdayReminder.AddRecord(name1, date1, inputFile);
+            string name2 = @"Jane";
+            string date2 = @"11"".10""""""";
+            BirthdayReminder.BirthdayReminder.AddRecord(name2, date2, inputFile);
+
+            // Assert
+            var expected = @"";
+            var result = File.ReadAllText(inputFile);
+            Assert.AreEqual(expected, result);
+        }
     }
 }

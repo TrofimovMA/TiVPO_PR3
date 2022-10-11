@@ -11,7 +11,7 @@ namespace BirthdayReminder
     {
         public static void AddRecord(string name, string date, string database)
         {
-            // TDD - AddSingleRecord - Refactor Stage
+            // TDD - AddRecordRules - Red Stage
 
             string txt = String.Format($"\"{name}\" \"{date}\"\n");
             File.AppendAllText(database, txt);
