@@ -20,9 +20,20 @@ namespace BirthdayReminder
 
         public static string GetRecords(string date, string database)
         {
-            // TDD - GetRecordsOnDate - Red Stage
 
-            return "";
+            // TDD - GetRecordsOnDate - Green Stage
+
+            string[] records = File.ReadAllLines(database);
+            string relevantRecords = "";
+            foreach (string record in records)
+            {
+                if (record.EndsWith($"\"{date}\""))
+                {
+                    relevantRecords += record + "\n";
+                }
+            }
+
+            return relevantRecords;
         }
     }
 }
