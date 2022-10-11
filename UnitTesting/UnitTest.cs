@@ -58,5 +58,21 @@ namespace UnitTesting
             var result = File.ReadAllText(inputFile);
             Assert.AreEqual(expected, result);
         }
+
+        [TestMethod]
+        public void TestGetRecordsOnDate()
+        {
+            // Arrange
+            File.WriteAllText(inputFile, "");
+            BirthdayReminder.BirthdayReminder.AddRecord("John", "12.10", inputFile);
+            BirthdayReminder.BirthdayReminder.AddRecord("Jane", "12.10", inputFile);
+
+            // Act
+            var result = BirthdayReminder.BirthdayReminder.GetRecords("12.10", inputFile);
+
+            // Assert
+            var expected = "\"John\" \"12.10\"\n\"Jane\" \"12.10\"\n";
+            Assert.AreEqual(expected, result);
+        }
     }
 }
