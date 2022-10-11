@@ -37,7 +37,7 @@ namespace BirthdayReminder
 
         public static string ExecuteCmd(string command, string database)
         {
-            // TDD - TestExecuteCommands - Green Stage
+            // TDD - TestExecuteCommands - Refactor Stage
 
             Regex regex = new Regex(@"(?<cmd>\S+)(\s*<(?<pars>.*?)>\s*)*");
             Match match = regex.Match(command);
@@ -48,12 +48,14 @@ namespace BirthdayReminder
             {
                 case "add":
                     AddRecord(pars[0], pars[1], database);
-                    return "";
+                    break;
                 case "get":
                     return GetRecords(pars[0], database);
                 default:
                     return string.Format("Invalid command: \"{0}\".", command);
             }
+
+            return "";
         }
     }
 }
