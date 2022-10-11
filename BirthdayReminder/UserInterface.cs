@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BirthdayReminder
 {
-    public class Program
+    public class UserInterface
     {
         // База данных
         static readonly string inputFile = Directory.GetCurrentDirectory() + @"\database.txt";
