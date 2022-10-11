@@ -11,11 +11,9 @@ namespace BirthdayReminder
     {
         public static void AddRecord(string name, string date, string database)
         {
-            // TDD - AddRecordRules - Green Stage
+            // TDD - AddRecordRules - Refactor Stage
 
-            if (name.Contains(@""""))
-                return;
-            if (date.Contains(@""""))
+            if (name.Contains(@"""") || date.Contains(@""""))
                 return;
 
             string txt = String.Format($"\"{name}\" \"{date}\"\n");
