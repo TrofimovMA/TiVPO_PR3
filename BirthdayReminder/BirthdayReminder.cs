@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Text.RegularExpressions;
+using System.Runtime.CompilerServices;
 
 namespace BirthdayReminder
 {
@@ -33,11 +35,25 @@ namespace BirthdayReminder
             return relevantRecords;
         }
 
-        public static string ExecuteCmd(string cmd, string database)
+        public static string ExecuteCmd(string command, string database)
         {
-            // TDD - TestExecuteCommands - Red Stage
+            // TDD - TestExecuteCommands - Green Stage
 
-            return "";
+            Regex regex = new Regex(@"(?<cmd>\S+)(\s*<(?<pars>.*?)>\s*)*");
+            Match match = regex.Match(command);
+            string cmd = match.Groups["cmd"].Value.ToLower();
+            string[] pars = match.Groups["pars"].Captures.Cast<Capture>().Select(x => x.Value).ToArray();
+
+            switch (cmd)
+            {
+                case "add":
+                    AddRecord(pars[0], pars[1], database);
+                    return "";
+                case "get":
+                    return GetRecords(pars[0], database);
+                default:
+                    return string.Format("Invalid command: \"{0}\".", command);
+            }
         }
     }
 }
