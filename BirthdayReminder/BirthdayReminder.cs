@@ -8,10 +8,9 @@ namespace BirthdayReminder
 {
     public class BirthdayReminder
     {
-        // Проверка TDD-среды
-        public static string TDD_Test()
+        public static void AddRecord(string name, string date, string database)
         {
-            return "TDD_Test";
+            // TDD - AddSingleRecord - Red Stage
         }
     }
 }
